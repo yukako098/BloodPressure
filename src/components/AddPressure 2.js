@@ -1,41 +1,24 @@
 import React, { Component } from "react";
 
 class AddPressure extends Component {
-  constructor(props) {
-    super(props);
-
-    this.dateInput = React.createRef();
-    this.systolicInput = React.createRef();
-    this.diastolicInput = React.createRef();
-    this.pulseInput = React.createRef();
-    this.weightInput = React.createRef();
-  }
+  state = {
+    date: "",
+    systolic: "",
+    diastolic: "",
+    pulse: "",
+    weight: ""
+  };
 
   onSubmit = e => {
     e.preventDefault();
-    const pressure = {
-      date: this.dateInput.current.value,
-      systolic: this.systolicInput.current.value,
-      diastolic: this.diastolicInput.current.value,
-      pulse: this.pulseInput.current.value,
-      weight: this.weightInput.current.value
-    };
-
-    console.log(pressure);
+    console.log(this.state);
   };
-
-  static defaultProps = {
-    date: "1/2",
-    systolic: "129",
-    diastolic: "89",
-    pulse: "70",
-    weight: "50"
-  };
+  onChange = e => this.setState({ [e.target.name]: e.target.value });
 
   render() {
-    const { date, systolic, diastolic, pulse, weight } = this.props;
+    const { date, systolic, diastolic, pulse, weight } = this.state;
     return (
-      <div className="card mb-3">
+      <div className="card mb-3 main">
         <div className="card-header">Add Pressure Record</div>
         <div className="card-body">
           <form onSubmit={this.onSubmit}>
@@ -46,8 +29,8 @@ class AddPressure extends Component {
                 name="date"
                 className="form-control form-control-lg"
                 placeholder="Enter Date..."
-                defaultValue={date}
-                ref={this.dateInput}
+                value={date}
+                onChange={this.onChange}
               />
             </div>
             <div className="form-group">
@@ -57,8 +40,8 @@ class AddPressure extends Component {
                 name="systolic"
                 className="form-control form-control-lg"
                 placeholder="Enter Systolic..."
-                defaultValue={systolic}
-                ref={this.systolicInput}
+                value={systolic}
+                onChange={this.onChange}
               />
             </div>
             <div className="form-group">
@@ -68,8 +51,8 @@ class AddPressure extends Component {
                 name="diastolic"
                 className="form-control form-control-lg"
                 placeholder="Enter Diastolic..."
-                defaultValue={diastolic}
-                ref={this.diastolicInput}
+                value={diastolic}
+                onChange={this.onChange}
               />
             </div>
             <div className="form-group">
@@ -79,8 +62,8 @@ class AddPressure extends Component {
                 name="pulse"
                 className="form-control form-control-lg"
                 placeholder="Enter Pulse..."
-                defaultValue={pulse}
-                ref={this.pulseInput}
+                value={pulse}
+                onChange={this.onChange}
               />
             </div>
             <div className="form-group">
@@ -90,8 +73,8 @@ class AddPressure extends Component {
                 name="weight"
                 className="form-control form-control-lg"
                 placeholder="Enter Weight..."
-                defaultValue={weight}
-                ref={this.weightInput}
+                value={weight}
+                onChange={this.onChange}
               />
             </div>
             <input

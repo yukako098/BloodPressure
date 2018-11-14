@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./Header.css";
+import "./Sidenav.css";
 
 const Header = props => {
   const { name, isActive } = props;
